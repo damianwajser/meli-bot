@@ -1,6 +1,6 @@
 var express = require('express');
 var server = express();
-var page_token = "EAAEbEbJAC78BAMznWNyMVS0GD7TKLYBhuCSK74QFphfnkZBoILKzZBKLh31wFM7W6lK7jdQbYmkIocbV2xYZCHMem6CvHWJRCmMVJDZAZBNbEm8PvZAsqDHamVlsVhaRaAOl3id6abpRh1dxStIFaMAXdhQXktPuV34jgESh5CJwZDZD";
+var page_token = "EAADH33ZAsWXgBAG4gcGaDzCMIMaZAehbeNrX2rMFLY1r6uZB1Y3eEE3MdNLqiZA8sYw0nBuklOiwUWzn4rFhZCYPTykuV6Nbzjr2tO6F6gnZBICUNxFr9ZCQDKyEB31sWZCOWzvkBkuT4ZAPjOiYMwx6nEyS52Mu0zVLzI1dPWg741QZDZD";
 var SERVER_PORT = 8080;
 var bodyParser = require('body-parser');
 var request = require('request');
@@ -9,7 +9,7 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
 server.get('/hello',function(req,res){
-  res.send(req.query['hub.challenge']);    
+  res.send(req.query['hub.challenge']);
 });
 
 server.post('/hello',function(req,res){
@@ -43,14 +43,14 @@ function callSendAPI(messageData) {
       var recipientId = body.recipient_id;
       var messageId = body.message_id;
 
-      console.log("Successfully sent generic message with id %s to recipient %s", 
+      console.log("Successfully sent generic message with id %s to recipient %s",
         messageId, recipientId);
     } else {
       console.error("Unable to send message.");
       console.error(response);
       console.error(error);
     }
-  });  
+  });
 }
 
 server.listen(SERVER_PORT);
